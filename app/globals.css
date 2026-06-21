@@ -1,0 +1,866 @@
+/* ============================================================
+   White Oak Residential — Next.js port of the imported layout.
+
+   RESPONSIVE MODEL (per spec):
+   - Three STATIC tiers separated by hard breakpoints at 991px and 475px.
+       • Desktop : viewport >= 992px  -> stage locked to 1920px
+       • Tablet  : 476px–991px        -> stage locked to  991px
+       • Mobile  : viewport <= 475px   -> stage locked to  475px
+   - Inside a tier nothing scales or slides. The stage is a fixed-width
+     canvas centered on the viewport; shrinking/growing the window only
+     TRIMS (or pads) the outer edges. The centered core is untouched until
+     a breakpoint is crossed, at which point the whole layout snaps to the
+     next tier's fixed sizing.
+   ============================================================ */
+
+:root {
+  --black: #000000;
+  --ink: #111111;
+  --grey-card: #808080;
+  --grey-field: #7a7a7a;
+  --text-light: #cfcfcf;
+  --text-muted: #5a5a5a;
+  --serif-display: var(--font-playfair), Georgia, serif;
+  --serif: var(--font-garamond), Georgia, serif;
+  --sans: var(--font-montserrat), Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Clip the trimmed outer edges; never allow horizontal scroll. */
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: #ffffff;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================================================
+   THE STAGE — fixed-width canvas, centered on the viewport.
+   left:50% + translateX(-50%) keeps the centre of the canvas pinned
+   to the centre of the viewport, so edges trim symmetrically.
+   ============================================================ */
+.stage {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1920px;
+}
+
+@media (max-width: 991px) {
+  .stage {
+    width: 991px;
+  }
+}
+
+@media (max-width: 475px) {
+  .stage {
+    width: 475px;
+  }
+}
+
+/* ---------- shared dividers ---------- */
+.divider {
+  display: block;
+  width: 100%;
+  max-width: 1520px;
+  margin: 46px auto 0;
+  height: auto;
+}
+
+/* ============================================================
+   TOP NAV
+   ============================================================ */
+.topbar {
+  background: var(--black);
+  height: 58px;
+  display: flex;
+  align-items: center;
+}
+.topbar__inner {
+  position: relative;
+  width: 100%;
+  max-width: 1860px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.topbar__links {
+  list-style: none;
+  display: flex;
+  gap: 56px;
+}
+.topbar__links a {
+  color: #ffffff;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+.topbar__links a:hover {
+  color: #cfcfcf;
+}
+.topbar__right {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.topbar__cta,
+.topbar__phone {
+  color: #dcdcdc;
+  font-family: var(--serif);
+  font-size: 16px;
+  letter-spacing: 0.6px;
+}
+.topbar__divider {
+  width: 1px;
+  height: 16px;
+  background: #6a6a6a;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  height: 732px;
+  background: url("/assets/Hero_BG.png") center 38% / cover no-repeat;
+}
+.hero__logo {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 212px;
+  height: auto;
+}
+.hero__band {
+  position: absolute;
+  left: 50%;
+  bottom: 196px;
+  transform: translateX(-50%);
+  width: 1340px;
+  max-width: 90%;
+  background: rgba(8, 8, 8, 0.42);
+  padding: 18px 20px;
+  text-align: center;
+}
+.hero__title {
+  font-family: var(--serif-display);
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 54px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   INTRO  (black)
+   ============================================================ */
+.intro {
+  background: var(--black);
+  padding: 54px 24px 60px;
+}
+.intro__inner {
+  max-width: 1560px;
+  margin: 0 auto;
+  text-align: center;
+}
+.intro__title {
+  font-family: var(--serif-display);
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 42px;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+.intro__text {
+  font-family: var(--sans);
+  font-weight: 500;
+  color: var(--text-light);
+  font-size: 16.5px;
+  line-height: 2;
+  max-width: 1540px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   HOW CAN WE HELP  (white)
+   ============================================================ */
+.help {
+  background: #ffffff;
+  padding: 54px 24px 0;
+}
+.help__inner {
+  max-width: 1520px;
+  margin: 0 auto;
+}
+.help__title {
+  text-align: center;
+  font-family: var(--serif-display);
+  font-weight: 700;
+  font-size: 32px;
+  color: #1a1a1a;
+  margin-bottom: 42px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 72px;
+}
+.card {
+  position: relative;
+  aspect-ratio: 1 / 1.07;
+  background: url("/assets/Card_BG_Border.png") center / 100% 100% no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 48px 30px 0;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+.card__icon {
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 26px;
+}
+.card__icon img {
+  max-height: 82px;
+  width: auto;
+}
+.card__title {
+  font-family: var(--serif);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffffff;
+  font-size: 27px;
+  margin-bottom: 16px;
+}
+.card__text {
+  font-family: var(--sans);
+  font-weight: 500;
+  color: #e8e8e8;
+  font-size: 13px;
+  line-height: 1.45;
+  max-width: 210px;
+}
+
+/* ============================================================
+   BUYERS / SELLERS  (white)
+   ============================================================ */
+.bs {
+  background: #ffffff;
+  padding: 60px 24px 96px;
+}
+.bs__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.bs__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  align-items: center;
+}
+.bs__row:first-child {
+  margin-bottom: 64px;
+}
+.bs__img img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+.bs__title {
+  font-family: var(--serif-display);
+  font-weight: 700;
+  font-size: 42px;
+  color: #1a1a1a;
+  margin-bottom: 24px;
+}
+.bs__text {
+  font-family: var(--sans);
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.85;
+  margin-bottom: 34px;
+}
+.btn {
+  display: inline-block;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 18px;
+  color: #1a1a1a;
+  background: #ffffff;
+  border: 1.5px solid #1a1a1a;
+  border-radius: 30px;
+  padding: 13px 30px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.btn:hover {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+
+/* ============================================================
+   AGENTS  (dark photo bg)
+   ============================================================ */
+.agents {
+  position: relative;
+  background: #2b2f33 url("/assets/agent_bg.png") center / cover no-repeat;
+  padding: 78px 24px 84px;
+}
+.agents__inner {
+  position: relative;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 130px;
+  text-align: center;
+}
+.agent__photo {
+  width: 290px;
+  margin: 0 auto 26px;
+  background: #ffffff;
+  border-radius: 26px;
+  padding: 7px;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+}
+.agent__photo img {
+  width: 100%;
+  border-radius: 20px;
+  display: block;
+}
+.agent__name {
+  font-family: var(--serif-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  font-size: 33px;
+  margin-bottom: 14px;
+}
+.agent__role {
+  font-family: var(--sans);
+  font-weight: 500;
+  color: #e6e6e6;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+.agent__bio {
+  font-family: var(--sans);
+  font-weight: 500;
+  color: #dadada;
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 430px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   MAP + CONTACT FORM  (white)
+   ============================================================ */
+.contact {
+  background: #ffffff;
+  padding: 46px 24px 70px;
+}
+.contact__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.contact__map {
+  width: 100%;
+  height: 620px;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 34px;
+}
+.contact__map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.contact__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 34px;
+}
+.contact__formtitle {
+  font-family: var(--serif-display);
+  font-weight: 700;
+  font-size: 30px;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.contact__address {
+  font-family: var(--serif-display);
+  font-weight: 700;
+  font-size: 26px;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.form {
+  max-width: 920px;
+}
+.form__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.field {
+  display: block;
+}
+.field--full {
+  grid-column: 1 / -1;
+}
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  background: var(--grey-field);
+  border: 0;
+  color: #ffffff;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 18px 20px;
+  outline: none;
+}
+.field input {
+  height: 58px;
+}
+.field select {
+  height: 58px;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='white'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+}
+.field textarea {
+  height: 150px;
+  resize: vertical;
+  text-transform: uppercase;
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #ffffff;
+  opacity: 1;
+}
+.field select:invalid {
+  color: #ffffff;
+}
+.form__submit {
+  margin-top: 20px;
+  background: var(--ink);
+  color: #ffffff;
+  border: 0;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 16px 34px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.form__submit:hover {
+  background: #000;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--black);
+  padding: 26px 24px;
+}
+.footer__inner {
+  max-width: 1620px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.footer__addr {
+  font-family: var(--sans);
+  font-weight: 500;
+  color: #e9e9e9;
+  font-size: 15px;
+}
+.footer__social {
+  display: flex;
+  gap: 12px;
+}
+.social {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 16px;
+}
+.footer__legal {
+  font-family: var(--sans);
+  font-weight: 400;
+  color: #bdbdbd;
+  font-size: 12.5px;
+  text-align: right;
+}
+
+/* ============================================================
+   TABLET TIER  — stage locked to 991px (426px–991px)
+   Fixed sizing; the layout reflows to 2-up / stacked but does not scale.
+   ============================================================ */
+@media (max-width: 991px) {
+  .topbar {
+    height: 54px;
+  }
+  .topbar__inner {
+    padding: 0 20px;
+  }
+  .topbar__links {
+    gap: 30px;
+  }
+  .topbar__links a {
+    font-size: 14px;
+    letter-spacing: 0.8px;
+  }
+  .topbar__right {
+    right: 20px;
+    gap: 12px;
+  }
+  .topbar__cta,
+  .topbar__phone {
+    font-size: 14px;
+  }
+
+  .hero {
+    height: 560px;
+  }
+  .hero__logo {
+    width: 180px;
+  }
+  .hero__band {
+    bottom: 120px;
+    width: auto;
+    max-width: 92%;
+  }
+  .hero__title {
+    font-size: 38px;
+  }
+
+  .intro {
+    padding: 44px 28px 48px;
+  }
+  .intro__title {
+    font-size: 30px;
+  }
+  .intro__text {
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  .help {
+    padding: 44px 28px 0;
+  }
+  .help__title {
+    font-size: 28px;
+    margin-bottom: 34px;
+  }
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+  .card {
+    padding: 44px 28px 0;
+  }
+
+  .bs {
+    padding: 50px 28px 70px;
+  }
+  .bs__row {
+    gap: 44px;
+  }
+  .bs__row:first-child {
+    margin-bottom: 48px;
+  }
+  .bs__title {
+    font-size: 34px;
+  }
+
+  .agents {
+    padding: 64px 28px 70px;
+  }
+  .agents__inner {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+  .agent__photo {
+    width: 260px;
+  }
+  .agent__name {
+    font-size: 28px;
+  }
+  .agent__role {
+    font-size: 16px;
+  }
+
+  .contact {
+    padding: 44px 28px 60px;
+  }
+  .contact__map {
+    height: 460px;
+  }
+  .form {
+    max-width: none;
+  }
+
+  .footer__inner {
+    max-width: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    text-align: center;
+  }
+  .footer__legal {
+    text-align: center;
+  }
+}
+
+/* ============================================================
+   MOBILE TIER  — stage locked to 475px (<= 475px)
+   Single-column, fixed sizing.
+   ============================================================ */
+@media (max-width: 475px) {
+  .topbar {
+    height: auto;
+    padding: 12px 0;
+  }
+  .topbar__inner {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 16px;
+  }
+  .topbar__links {
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .topbar__links a {
+    font-size: 13px;
+  }
+  .topbar__right {
+    position: static;
+    transform: none;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .hero {
+    height: 420px;
+  }
+  .hero__logo {
+    width: 140px;
+    top: 18px;
+  }
+  .hero__band {
+    bottom: 84px;
+    width: 92%;
+    padding: 12px 14px;
+  }
+  .hero__title {
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+
+  .intro {
+    padding: 32px 16px 36px;
+  }
+  .intro__title {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+  .intro__text {
+    font-size: 14px;
+    line-height: 1.85;
+  }
+
+  .help {
+    padding: 36px 16px 0;
+  }
+  .help__title {
+    font-size: 24px;
+    margin-bottom: 26px;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .card {
+    aspect-ratio: 1 / 0.92;
+    padding: 38px 26px 0;
+  }
+  .card__icon {
+    height: 72px;
+    margin-bottom: 20px;
+  }
+  .card__icon img {
+    max-height: 70px;
+  }
+  .card__title {
+    font-size: 23px;
+  }
+  .card__text {
+    font-size: 12.5px;
+    max-width: 230px;
+  }
+
+  .bs {
+    padding: 40px 16px 56px;
+  }
+  .bs__row,
+  .bs__row:first-child {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .bs__row .bs__img {
+    order: -1;
+  }
+  .bs__title {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+  .bs__text {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  .btn {
+    font-size: 15px;
+    padding: 11px 24px;
+  }
+
+  .agents {
+    padding: 52px 16px 56px;
+  }
+  .agents__inner {
+    grid-template-columns: 1fr;
+    gap: 46px;
+  }
+  .agent__photo {
+    width: 220px;
+  }
+  .agent__name {
+    font-size: 26px;
+  }
+  .agent__role {
+    font-size: 16px;
+  }
+  .agent__bio {
+    font-size: 14px;
+    max-width: none;
+  }
+
+  .contact {
+    padding: 36px 16px 48px;
+  }
+  .contact__map {
+    height: 300px;
+    margin-bottom: 26px;
+  }
+  .contact__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 26px;
+  }
+  .contact__formtitle {
+    font-size: 24px;
+  }
+  .contact__address {
+    font-size: 17px;
+  }
+  .form__grid {
+    grid-template-columns: 1fr;
+  }
+  .field input,
+  .field select {
+    height: 52px;
+  }
+  .field textarea {
+    height: 130px;
+  }
+  .form__submit {
+    width: 100%;
+  }
+
+  .footer {
+    padding: 22px 16px;
+  }
+  .footer__inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+  }
+  .footer__addr {
+    font-size: 13px;
+  }
+  .footer__legal {
+    font-size: 12px;
+    text-align: center;
+  }
+}

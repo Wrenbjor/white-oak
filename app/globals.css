@@ -515,6 +515,35 @@ a {
   background: #000;
 }
 
+/* ---------- human-verification prompt ---------- */
+.captcha {
+  border: 1px solid #1a1a1a;
+  padding: 18px 20px;
+  margin-top: 22px;
+}
+.captcha__prompt {
+  font-family: var(--serif-display);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin-bottom: 14px;
+}
+.captcha__icons {
+  display: flex;
+  gap: 22px;
+}
+.captcha__icon {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 22px;
+  line-height: 1;
+  color: #111111;
+  cursor: pointer;
+}
+
 /* ============================================================
    FOOTER
    ============================================================ */

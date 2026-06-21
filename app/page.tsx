@@ -45,22 +45,18 @@ export default function Home() {
       {/* ============ INTRO ============ */}
       <section className="intro">
         <div className="intro__inner">
-          <h2 className="intro__title">
-            White Oak Residential Real Estate Brokers in Morristown, NJ
-          </h2>
+          <h2 className="intro__title">White Oak Residential Real Estate</h2>
           <p className="intro__text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-            vestibulum mi quam, ac pulvinar orci rutrum eu. Nulla interdum lectus
-            nulla, vel ultricies odio mattis eget. Duis et quam in mauris placerat
-            sodales id nec est. Vivamus vitae eros eget nisl rutrum blandit.
-            Maecenas augue eros, laoreet vitae tortor et, rutrum volutpat lectus.
-            Sed est elit, viverra vel tempus sagittis, faucibus vulputate risus.
-            Pellentesque bibendum, lorem a imperdiet consectetur, orci tortor
-            efficitur risus, ut dignissim sapien est lobortis nunc. Sed non mauris
-            scelerisque, pharetra arcu eget, ornare est. Proin ut ultricies augue.
-            Curabitur eu scelerisque Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit. Vestibulum vestibulum mi quam, ac pulvinar orci rutrum
-            eu.
+            White Oak Residential real estate brokers in Morristown, NJ, provide
+            local North Jersey residents with premier assistance &amp; guidance in
+            buying or selling a property. At White Oak Residential, we help North
+            Jersey clients buy and sell homes with confidence. Led by Karen Polanco
+            and Michael Marchese, our team combines local market expertise with
+            personalized service. We focus on smart strategy, strong negotiation,
+            and a seamless experience from start to finish. At White Oak
+            Residential, our mission is to offer a concierge-level experience that
+            ensures every transaction is executed with the highest standards of
+            integrity and professionalism.
           </p>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="divider" src="/assets/divider_white.png" alt="" />
@@ -79,8 +75,8 @@ export default function Home() {
               </span>
               <h3 className="card__title">Buyers</h3>
               <p className="card__text">
-                Lorem ipsum dolor sit amet, consect adipiscing elit. Vestibulum
-                vestib
+                Our experts provide concierge-level support for local South Jersey
+                homebuyers.
               </p>
             </a>
             <a href="#" className="card">
@@ -90,8 +86,8 @@ export default function Home() {
               </span>
               <h3 className="card__title">Sellers</h3>
               <p className="card__text">
-                Lorem ipsum dolor sit amet, consect adipiscing elit. Vestibulum
-                vestib
+                Expert strategic pricing and elite representation for South Jersey
+                sellers.
               </p>
             </a>
             <a href="#" className="card">
@@ -101,8 +97,8 @@ export default function Home() {
               </span>
               <h3 className="card__title">About Us</h3>
               <p className="card__text">
-                Lorem ipsum dolor sit amet, consect adipiscing elit. Vestibulum
-                vestib
+                Our team of expert local brokers can help you get your desired
+                outcome.
               </p>
             </a>
             <a href="#" className="card">
@@ -112,8 +108,8 @@ export default function Home() {
               </span>
               <h3 className="card__title">Contact Us</h3>
               <p className="card__text">
-                Lorem ipsum dolor sit amet, consect adipiscing elit. Vestibulum
-                vestib
+                Contact our Morristown experts today for premier real estate
+                assistance.
               </p>
             </a>
           </div>
@@ -137,12 +133,12 @@ export default function Home() {
             <div className="bs__copy">
               <h3 className="bs__title">Buyers</h3>
               <p className="bs__text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Vestibulum vestibulum mi quam, ac pulvinar orci rutrum eu. Nulla
-                interdum lectus nulla, vel ultricies odio mattis eget. Duis et quam
-                in mauris placerat sodales id nec est. Vivamus vitae eros eget nisl
-                rutrum blandit. Maecenas augue eros, laoreet vitae tortor et,
-                rutrum volutpat lectus. Sed est elit, viverra vel tempus sagittis.
+                For buyers our team provides professional guidance to help you find
+                and secure your ideal home in this competitive market. We use our
+                deep background in commercial negotiation and luxury service to give
+                you a strategic edge. Our experts focus on your specific goals,
+                ensuring you make an informed investment within your target
+                neighborhood.
               </p>
               <a href="#" className="btn">
                 Get Started
@@ -153,12 +149,11 @@ export default function Home() {
             <div className="bs__copy">
               <h3 className="bs__title">Sellers</h3>
               <p className="bs__text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Vestibulum vestibulum mi quam, ac pulvinar orci rutrum eu. Nulla
-                interdum lectus nulla, vel ultricies odio mattis eget. Duis et quam
-                in mauris placerat sodales id nec est. Vivamus vitae eros eget nisl
-                rutrum blandit. Maecenas augue eros, laoreet vitae tortor et,
-                rutrum volutpat lectus. Sed est elit, viverra vel tempus sagittis.
+                Sellers receive expert representation and strategic pricing from our
+                team at White Oak Residential to ensure their properties stand out.
+                We apply our background in commercial negotiation and luxury service
+                to help you secure the best results for your investment. Our experts
+                handle every detail to provide a smooth, successful transition.
               </p>
               <a href="#" className="btn">
                 Get Started
@@ -186,11 +181,11 @@ export default function Home() {
               <br />P: (201) 787-7634
             </p>
             <p className="agent__bio">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-              vestibulum mi quam, ac pulvinar orci rutrum eu. Nulla interdum lectus
-              nulla, vel ultricies odio mattis eget. Duis et quam in mauris
-              placerat sodales id nec est. Vivamus vitae eros eget nisl rutrum
-              blandit.
+              Michael Marchese, offers 25+ years of elite expertise. An
+              award-winning leader with 350+ transactions, Michael earned the 2022
+              NJBIZ Leader in Real Estate title. He leverages institutional-grade
+              negotiation strategies and deep market knowledge to secure the best
+              results for our clients.
             </p>
           </div>
           <div className="agent">
@@ -204,11 +199,11 @@ export default function Home() {
               <br />P: (973) 610-9678
             </p>
             <p className="agent__bio">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-              vestibulum mi quam, ac pulvinar orci rutrum eu. Nulla interdum lectus
-              nulla, vel ultricies odio mattis eget. Duis et quam in mauris
-              placerat sodales id nec est. Vivamus vitae eros eget nisl rutrum
-              blandit.
+              Karen Polanco, fluent in both English and Spanish, provides White Oak
+              Residential clients with invaluable local insight. Known for her
+              client-first approach, Karen expertly guides buyers and sellers
+              through every transaction. She is dedicated to delivering personalized
+              service and professional results across the region.
             </p>
           </div>
         </div>
@@ -228,7 +223,7 @@ export default function Home() {
           <div className="contact__head">
             <h2 className="contact__formtitle">Contact Form</h2>
             <p className="contact__address">
-              143 Washington Street, Morristown, NJ 07960
+              143 Washington Street, Morristown, New Jersey, 07960
             </p>
           </div>
           <ContactForm />
@@ -239,8 +234,8 @@ export default function Home() {
       <footer className="footer">
         <div className="footer__inner">
           <p className="footer__addr">
-            143 Washington Street, Morristown, NJ 07960{"  |  "}
-            Phone: (973) 610-967
+            143, Washington Street, Morristown, New Jersey, 07960{"  |  "}
+            (973) 610-9678
           </p>
           <div className="footer__social">
             <a href="#" aria-label="Facebook" className="social">
@@ -251,9 +246,8 @@ export default function Home() {
             </a>
           </div>
           <p className="footer__legal">
-            Privacy Policy{"  -  "}Copyright 2026 White Oak
-            Residential. All Rights Reserved. Created and Designed By VisionLine
-            Media
+            Privacy Policy{"  -  "}Copyright 2026 All Rights Reserved Created and
+            Designed by VisionLine Media
           </p>
         </div>
       </footer>

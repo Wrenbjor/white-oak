@@ -39,6 +39,23 @@ export default function ContactForm() {
           <textarea placeholder="How Can We Help You?:" />
         </label>
       </div>
+      <div className="captcha">
+        <p className="captcha__prompt">
+          Please prove you are human by selecting the cup.
+        </p>
+        <div className="captcha__icons" role="group" aria-label="Select the cup">
+          {["★", "⚑", "✈", "🌲", "♥", "☕"].map((icon, i) => (
+            <button
+              key={i}
+              type="button"
+              className="captcha__icon"
+              aria-label={`option ${i + 1}`}
+            >
+              {icon}
+            </button>
+          ))}
+        </div>
+      </div>
       <button type="submit" className="form__submit">
         Submit
       </button>
